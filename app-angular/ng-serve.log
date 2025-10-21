@@ -1,0 +1,143 @@
+❯ Building...
+✘ [ERROR] TS2305: Module '"./shared/components/navbar/navbar.component"' has no exported member 'NavbarComponent'. [plugin angular-compiler]
+
+    src/app/app.component.ts:2:9:
+      2 │ import { NavbarComponent } from './shared/components/navbar/navbar....
+        ╵          ~~~~~~~~~~~~~~~
+
+✘ [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    src/app/app.component.ts:7:12:
+      7 │   imports: [NavbarComponent],
+        ╵             ~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    src/app/app.component.ts:7:12:
+      7 │   imports: [NavbarComponent],
+        ╵             ~~~~~~~~~~~~~~~
+
+✘ [ERROR] TS2305: Module '"../shared/components/navbar/navbar.component"' has no exported member 'NavbarComponent'. [plugin angular-compiler]
+
+    src/app/app/app.component.ts:2:9:
+      2 │ import { NavbarComponent } from '../shared/components/navbar/navbar...
+        ╵          ~~~~~~~~~~~~~~~
+
+✘ [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    src/app/app/app.component.ts:7:12:
+      7 │   imports: [NavbarComponent],
+        ╵             ~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    src/app/app/app.component.ts:7:12:
+      7 │   imports: [NavbarComponent],
+        ╵             ~~~~~~~~~~~~~~~
+
+✘ [ERROR] TS1127: Invalid character. [plugin angular-compiler]
+
+    src/app/shared/components/navbar/navbar.component.ts:6:12:
+      6 │   template: \`
+        ╵             ^
+
+✘ [ERROR] TS1136: Property assignment expected. [plugin angular-compiler]
+
+    src/app/shared/components/navbar/navbar.component.ts:6:13:
+      6 │   template: \`
+        ╵              ^
+
+✘ [ERROR] TS1160: Unterminated template literal. [plugin angular-compiler]
+
+    src/app/shared/components/navbar/navbar.component.ts:19:0:
+      19 │ 
+         ╵ ^
+
+● [DEBUG] This "import" expression will not be bundled because the argument is not a string literal [unsupported-dynamic-import]
+
+    src/app/pages/home/home.component.ts:19:120:
+      19 │ ...nt"; function HomeComponent_HmrLoad(t) { import(/* @vite-ignore */
+         ╵                                             ~~~~~~
+
+● [DEBUG] This "import" expression will not be bundled because the argument is not a string literal [unsupported-dynamic-import]
+
+    src/app/pages/home/home.component.ts:19:120:
+      19 │ ...nt"; function HomeComponent_HmrLoad(t) { import(/* @vite-ignore */
+         ╵                                             ~~~~~~
+
+● [DEBUG] This "import" expression will not be bundled because the argument is not a string literal [unsupported-dynamic-import]
+
+    src/app/app.ts:86:74:
+      86 │ ...app.ts%40App"; function App_HmrLoad(t) { import(/* @vite-ignore */
+         ╵                                             ~~~~~~
+
+7 errors
+✔ Building...
+Application bundle generation failed. [1.481 seconds] - 2025-10-13T21:06:47.077Z
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"./shared/components/navbar/navbar.component"' has no exported member 'NavbarComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.component.ts:2:9:
+[37m      2 │ import { [32mNavbarComponent[37m } from './shared/components/navbar/navbar....
+        ╵          [32m~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mNG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.component.ts:7:12:
+[37m      7 │   imports: [[32mNavbarComponent[37m],
+        ╵             [32m~~~~~~~~~~~~~~~[0m
+
+  Unknown reference.
+
+    src/app/app.component.ts:7:12:
+[37m      7 │   imports: [[32mNavbarComponent[37m],
+        ╵             [32m~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"../shared/components/navbar/navbar.component"' has no exported member 'NavbarComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app/app.component.ts:2:9:
+[37m      2 │ import { [32mNavbarComponent[37m } from '../shared/components/navbar/navbar...
+        ╵          [32m~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mNG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app/app.component.ts:7:12:
+[37m      7 │   imports: [[32mNavbarComponent[37m],
+        ╵             [32m~~~~~~~~~~~~~~~[0m
+
+  Unknown reference.
+
+    src/app/app/app.component.ts:7:12:
+[37m      7 │   imports: [[32mNavbarComponent[37m],
+        ╵             [32m~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS1127: Invalid character.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/components/navbar/navbar.component.ts:6:12:
+[37m      6 │   template: [32m[37m\`
+        ╵             [32m^[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS1136: Property assignment expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/components/navbar/navbar.component.ts:6:13:
+[37m      6 │   template: \[32m`[37m
+        ╵              [32m^[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS1160: Unterminated template literal.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/components/navbar/navbar.component.ts:19:0:
+[37m      19 │ [32m[37m
+         ╵ [32m^[0m
+
+
+Watch mode enabled. Watching for file changes...

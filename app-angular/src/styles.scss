@@ -1,0 +1,161 @@
+/* You can add global styles to this file, and also import other style files */
+:root{
+    --night-1:#07111f; /* cielo */
+    --night-2:#0c1e3a;
+    --grass-1:#0b7d2c;
+    --grass-2:#0e8e33;
+    --line:#ffffff;
+    --neon:#00ff88;
+    --gold:#ffd54a;
+    --card:#0a1426cc;
+    --shadow:#00000080;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; font-family:system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    background: radial-gradient(1200px 60% at 50% 20%, #0e2a55 0%, var(--night-2) 40%, var(--night-1) 100%);
+    color:#fff; overflow:hidden; /* para mantener el efecto de estadio */
+  }
+
+  /* --- Estadio (luces en movimiento) --- */
+  .stadium{
+    position:fixed; inset:0; pointer-events:none;
+  }
+  .stadium::before, .stadium::after{
+    content:""; position:absolute; inset:-20% -10%;
+    background:
+      conic-gradient(from 0deg at 25% 0%, #ffffff33 0 20deg, transparent 20deg 360deg),
+      conic-gradient(from 180deg at 75% 0%, #ffffff33 0 20deg, transparent 20deg 360deg);
+    filter:blur(8px);
+    mix-blend-mode:screen; opacity:.6;
+    animation: sweep 14s linear infinite;
+    transform-origin: 50% 0%;
+  }
+  .stadium::after{ animation-duration:18s; opacity:.45; }
+  @keyframes sweep { to{ transform:rotate(360deg) } }
+
+  /* --- Cancha con perspectiva --- */
+  .scene{
+    position:absolute; inset:0; display:grid; place-items:center;
+    perspective: 1200px;
+  }
+  .field-wrap{ width:min(92vw, 1200px); aspect-ratio: 16/9; transform: rotateX(12deg) translateY(4vh); position:relative; }
+
+  .field{
+    position:absolute; inset:0; border-radius:22px; overflow:hidden; box-shadow:0 50px 120px var(--shadow);
+    background:
+      repeating-linear-gradient(90deg, var(--grass-1) 0 80px, var(--grass-2) 80px 160px);
+    outline:2px solid #ffffff22;
+  }
+  /* brillo de borde neon */
+  .field::before{
+    content:""; position:absolute; inset:0; border-radius:22px;
+    padding:2px; background:linear-gradient(90deg, #00ffa3, #39c6ff, #00ffa3);
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    animation: borderflow 8s linear infinite;
+  }
+  @keyframes borderflow{ 50%{ filter:hue-rotate(180deg)} }
+
+  /* Líneas de la cancha */
+  .line-mark{ position:absolute; border:3px solid var(--line); border-radius:6px }
+  .half-line{ position:absolute; left:50%; top:0; bottom:0; width:0; border-left:3px solid var(--line) }
+  .circle{ position:absolute; left:50%; top:50%; width:220px; height:220px; margin:-110px 0 0 -110px; border:3px solid var(--line); border-radius:50% }
+  .pk-arc{ position:absolute; width:120px; height:120px; border:3px solid var(--line); border-radius:50%; background:transparent }
+
+  /* Dimensiones relativas (simple y vistoso) */
+  .goal-left{ left:2%; top:35%; width:13%; height:30% }
+  .goal-right{ right:2%; top:35%; width:13%; height:30% }
+
+  .area-left{ left:7%; top:26%; width:22%; height:48% }
+  .area-right{ right:7%; top:26%; width:22%; height:48% }
+
+  .pk-left{ left:20%; top:50%; transform:translate(-50%,-50%); }
+  .pk-right{ right:20%; top:50%; transform:translate(50%,-50%); }
+
+  /* Red de portería (decorativa) */
+  .net{ position:absolute; top:50%; transform:translateY(-50%); width:2.4%; height:36%; background-image: linear-gradient(90deg,#fff2 2px,transparent 2px), linear-gradient(#fff2 2px,transparent 2px); background-size:14px 14px; opacity:.6 }
+  .net.left{ left:0.6% }
+  .net.right{ right:0.6% }
+
+  /* --- Marcador superior --- */
+  .scoreboard{
+    position:absolute; left:50%; top:-10px; transform:translate(-50%,-50%) rotateX(12deg);
+    background:#091020cc; border:1px solid #ffffff2a; border-radius:14px; padding:10px 18px; backdrop-filter: blur(6px);
+    display:flex; align-items:center; gap:14px; box-shadow:0 10px 30px #0008; pointer-events:none;
+  }
+  .led{ width:8px; height:8px; border-radius:50%; background:#ff2d2d; box-shadow:0 0 10px #ff2d2d; animation: blink 1.2s infinite }
+  .led.ok{ background:#2dff6d; box-shadow:0 0 10px #2dff6d; animation-duration:1.8s }
+  @keyframes blink{ 50%{ filter:brightness(.35) } }
+  .scoreboard h1{ font-size: clamp(16px, 3vw, 22px); margin:0; letter-spacing:.5px; font-weight:700 }
+  .tag{ font-size:12px; color:#cfe; opacity:.9 }
+
+  /* --- Tarjeta de jugador (About) --- */
+  .player-card{
+    position:absolute; left:4%; bottom:6%; width:min(420px, 42%);
+    background:linear-gradient(135deg, #0a1426cc, #0a142699); border:1px solid #ffffff22; border-radius:18px; padding:18px 20px; backdrop-filter: blur(6px);
+    box-shadow: 0 20px 60px #0007;
+  }
+  .player-card h2{ margin:0 0 6px 0; font-size:clamp(20px, 3.4vw, 28px); color:#fff }
+  .player-card .line{ width:80px; height:3px; background:var(--gold); border-radius:2px; margin:8px 0 12px 0 }
+  .row{ display:flex; align-items:center; gap:10px; margin:6px 0; color:#def }
+  .pill{ display:inline-block; padding:6px 10px; border-radius:999px; font-weight:600; background:#0ef3; border:1px solid #0ef9 }
+
+  /* --- Balón animado --- */
+  .ball-wrap{ position:absolute; left:8%; bottom:10%; width:84%; height:40%; animation: run-x 7s cubic-bezier(.5,0,.2,1) infinite alternate; }
+  @keyframes run-x{ from{ transform:translateX(0) } to{ transform:translateX(0) translateX( calc(100% - 80px) ) } }
+
+  .ball{ position:absolute; bottom:0; width:80px; aspect-ratio:1; border-radius:50%;
+    background:#fff; box-shadow:0 18px 24px #0007; animation: bounce 1s ease-in-out infinite, roll 3s linear infinite; transform-origin:50% 100%;
+    display:grid; place-items:center; cursor:pointer; 
+  }
+  /* dibujo de balón (SVG inline como background) */
+  .ball::before{ content:""; width:76%; aspect-ratio:1; background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g fill="%23000"><polygon points="50,7 65,20 60,40 40,40 35,20"/><polygon points="17,35 35,20 40,40 27,55 10,50"/><polygon points="83,35 65,20 60,40 73,55 90,50"/><polygon points="27,55 40,40 60,40 73,55 62,73 38,73"/><polygon points="10,50 27,55 20,75 5,65"/><polygon points="90,50 73,55 80,75 95,65"/><polygon points="20,75 38,73 35,93 15,90"/><polygon points="80,75 62,73 65,93 85,90"/></g></svg>') center/contain no-repeat; filter:drop-shadow(0 0 1px #0008); }
+
+  .shadow{ position:absolute; bottom:-4px; left:0; width:80px; height:14px; background:radial-gradient(50% 100% at 50% 0%, #0008, transparent 70%); filter:blur(2px); transform:scaleX(.8); animation: shadow 1s ease-in-out infinite; }
+
+  @keyframes bounce{
+    0%,100%{ transform: translateY(0) scaleY(1) }
+    50%{ transform: translateY(-120px) scaleY(.96) }
+  }
+  @keyframes shadow{
+    0%,100%{ transform: translateY(0) scaleX(.8); opacity:.85 }
+    50%{ transform: translateY(8px) scaleX(1.2); opacity:.35 }
+  }
+  @keyframes roll{ to{ rotate:360deg } }
+
+  /* Click = patada (pequeño boost) */
+  .ball.kick{ animation:bounce .7s ease-in-out 1, roll .6s linear 1; }
+
+  /* --- Público (olas) --- */
+  .crowd{ position:absolute; left:50%; top:-2%; transform:translate(-50%,-50%) rotateX(12deg); display:flex; gap:10px; opacity:.65; filter:blur(.3px); }
+  .crowd .fan{ width:6px; height:10px; background:#9cf; border-radius:2px; animation: wave 1.6s ease-in-out infinite; }
+  .crowd .fan:nth-child(odd){ animation-duration:1.3s }
+  .crowd .fan:nth-child(3n){ animation-duration:1.9s }
+  @keyframes wave{ 50%{ transform:translateY(-6px) } }
+
+  /* --- Ticker inferior --- */
+  .ticker{ position:absolute; left:0; right:0; bottom:-6px; transform:rotateX(12deg); overflow:hidden; }
+  .ticker .lane{ display:flex; gap:30px; white-space:nowrap; padding:8px 0; background:#08152b99; border-top:1px solid #ffffff22; border-bottom:1px solid #ffffff22; }
+  .ticker .lane span{ padding-left:100%; animation: marquee 18s linear infinite; font-weight:700; letter-spacing:.8px }
+  @keyframes marquee{ to{ transform: translateX(-100%) } }
+
+  /* --- Botón flotante (mute/pausa visual) --- */
+  .controls{ position:fixed; right:14px; top:14px; z-index:10; display:flex; gap:10px }
+  .btn{ background:linear-gradient(135deg,#0cf,#09f); color:#001b2a; border:none; border-radius:999px; padding:9px 14px; font-weight:800; letter-spacing:.5px; cursor:pointer; box-shadow:0 8px 20px #0007; transition:.25s; }
+  .btn:hover{ transform:translateY(-2px); filter:brightness(1.1) }
+
+  /* Responsivo */
+  @media (max-width:800px){
+    .player-card{ left:5%; right:5%; width:auto }
+    .ball-wrap{ height:46% }
+  }
+/* --- CR7 badge & watermark --- */
+  .watermark{position:absolute; inset:auto; left:50%; top:46%; transform:translate(-50%,-50%) rotate(-18deg); font-weight:900; font-size:clamp(80px,14vw,200px); letter-spacing:.06em; color:#fff; opacity:.06; pointer-events:none;}
+  .cr7-badge{position:absolute; right:3%; top:8%; transform:translateY(-10%) rotateX(12deg); background:linear-gradient(135deg,#111a33,#0b2a6a); border:1px solid #ffffff22; border-radius:14px; padding:10px 14px; box-shadow:0 10px 28px #0008;}
+  .cr7-badge .num{font-size:clamp(24px,4vw,34px); font-weight:900; color:#ffd54a;}
+  .cr7-badge .name{display:block; font-weight:700; letter-spacing:.12em; color:#cfe; margin-top:2px;}
+  .player-card .quote{margin-top:10px; font-style:italic; color:#cfe; opacity:.9}
