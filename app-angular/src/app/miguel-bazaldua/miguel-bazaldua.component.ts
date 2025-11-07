@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-miguel-bazaldua',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './miguel-bazaldua.component.html',
-  styleUrl: './miguel-bazaldua.component.scss'
+  styleUrls: ['./miguel-bazaldua.component.scss']
 })
-export class MiguelBazalduaComponent {
-
-}
+export class MiguelBazalduaComponent {}
