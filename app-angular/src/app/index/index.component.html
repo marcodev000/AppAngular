@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>🌟 Página principal del equipo</h1>
+  <p>Selecciona un perfil para ver más información:</p>
+
+  
+  <div class="cards">
+    <div
+      class="card"
+      *ngFor="let persona of participantes"
+      [routerLink]="persona.ruta"
+    >
+      <img [src]="persona.foto" [alt]="persona.nombre" />
+      <h2>{{ persona.nombre }}</h2>
+      <p>{{ persona.rol }}</p>
+    </div>
+  </div>
+
+</div>

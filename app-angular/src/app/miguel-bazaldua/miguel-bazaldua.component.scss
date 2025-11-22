@@ -1,0 +1,128 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Great+Vibes&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: #f1f1f1; 
+}
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 40px;
+    font-family: 'Great Vibes', cursive;
+    color: #e94560;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+}
+
+/* Subtítulos */
+h2 {
+    text-align: center;
+    color: #21e6c1;
+    border-bottom: 2px solid #21e6c1;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Caja de información */
+div {
+    max-width: 700px;
+    margin: 40px auto;
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.6);
+}
+
+/* Párrafos */
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 8px 0;
+}
+
+/* Lista de gustos */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background: rgba(233, 69, 96, 0.2);
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    transition: transform 0.3s, background 0.3s;
+    position: relative;
+    padding-left: 40px;
+}
+
+/* Iconitos musicales */
+ul li::before {
+    content: "🎶";
+    position: absolute;
+    left: 10px;
+}
+
+/* Efecto hover */
+ul li:hover {
+    transform: scale(1.05);
+    background: rgba(233, 69, 96, 0.4);
+    cursor: pointer;
+}
+
+.carousel {
+    position: relative;
+    width: 80%;
+    max-width: 700px;
+    margin: 40px auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.8s ease-in-out;
+    will-change: transform;
+    padding: 20px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.6);
+    scroll-behavior: smooth;
+}
+
+.carousel img {
+    width: 100%;
+    flex-shrink: 0;
+    border-radius: 15px;
+}
+.carousel img:not(:first-child) {
+    margin-left: 20px;
+}
+.carousel img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    div {
+        width: 90%;
+        margin: 20px auto;
+    }
+    .carousel {
+        width: 90%;
+    }
+}
+
+
+
+
+
