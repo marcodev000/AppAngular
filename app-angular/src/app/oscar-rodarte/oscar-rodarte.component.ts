@@ -1,14 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']  // Cambiado a .scss
+  selector: 'app-oscar-rodarte',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './oscar-rodarte.component.html',
+  styleUrls: ['./oscar-rodarte.component.scss']
 })
-export class AppComponent implements OnInit {
-  currentYear: number = 0;
-
-  ngOnInit() {
-    this.currentYear = new Date().getFullYear();
-  }
-}
+export class OscarRodarteComponent {}
