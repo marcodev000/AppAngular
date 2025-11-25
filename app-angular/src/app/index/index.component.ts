@@ -24,10 +24,10 @@ export class IndexComponent {
       foto: ''
     },
     {
-      nombre: 'Persona 3',
-      rol: 'Persona 3',
-      ruta: '',
-      foto: 'https://i.imgur.com/E2M6Z5Q.png'
+      nombre: 'Oscar Rodarte',
+      rol: '',
+      ruta: '/oscar-rodarte',
+      foto: 'https://cdn-icons-png.flaticon.com/512/8743/8743996.png'
     },
     {
       nombre: 'Persona 4',
