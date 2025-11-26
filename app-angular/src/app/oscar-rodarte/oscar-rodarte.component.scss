@@ -1,97 +1,352 @@
+// Colores base (puedes moverlos a styles.scss si quieres reutilizarlos)
+$bluey-900: #123352;
+$bluey-700: #14476f;
+$bluey-500: #2a7abf;
+$bluey-300: #a9e4ff;
+$cream: #ffe9c7;
+$bg-page: #f3f8ff;
+$text-main: #102131;
+
+// Para que el componente ocupe todo el ancho
+:host {
+  display: block;
+  min-height: 100vh;
+  background: $bg-page;
+  color: $text-main;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+// Enlace para saltar al contenido (accesibilidad)
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: #000;
+  color: #fff;
+  border-radius: 999px;
+  z-index: 999;
+  font-size: 0.875rem;
+
+  &:focus {
+    left: 0.75rem;
+  }
+}
+
+/* HERO */
+
 .hero {
   position: relative;
-  padding: 6rem 0 4rem;
-  background: radial-gradient(1200px 500px at 10% -10%, rgba(93,183,232,.35) 0%, rgba(93,183,232,0) 60%),
-              radial-gradient(900px 400px at 90% -20%, rgba(244,154,165,.25) 0%, rgba(244,154,165,0) 60%);
+  padding: 3.5rem 1.5rem 6rem;
   overflow: hidden;
+  color: #fff;
+  background: linear-gradient(180deg, #7ecdf2 0%, #a9e4ff 40%, #f3f8ff 100%);
 
-  .title {
-    font-family: 'Baloo 2', cursive;
+  &__inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  &__text {
+    max-width: 34rem;
+  }
+
+  &__title {
+    font-size: clamp(2rem, 4vw, 2.8rem);
     font-weight: 800;
-    font-size: clamp(2.2rem, 5vw, 4rem);
-    letter-spacing: .5px;
-    color: var(--bluey-700);
-    // Borde tipo caricatura
-    -webkit-text-stroke: 3px #ffffff;
-    text-shadow: 2px 2px 0 #ffffff, -2px 2px 0 #ffffff, 2px -2px 0 #ffffff, -2px -2px 0 #ffffff, 0 4px 0 rgba(0,0,0,.08);
+    margin-bottom: 0.75rem;
   }
 
-  .subtitle {
-    color: var(--bluey-600);
-    font-weight: 700;
-    font-size: clamp(1.1rem, 2.3vw, 1.6rem);
+  &__subtitle {
+    font-size: 1rem;
+    opacity: 0.95;
+    margin-bottom: 1.25rem;
+    font-weight: 500;
   }
-}
 
-.badge-chip {
-  background: #fff;
-  border: 2px solid var(--bluey-300);
-  color: var(--bluey-700);
-  border-radius: 999px;
-  font-weight: 700;
-  padding: .6rem 1rem;
-  box-shadow: var(--shadow);
-}
+  &__avatar-wrapper {
+    display: flex;
+    justify-content: center;
+  }
 
-.profile-card {
-  border: 4px solid #fff;
-  border-radius: var(--radius-xl);
-  background: linear-gradient(180deg, #fff 0%, #fff 60%, var(--cream) 100%);
-  box-shadow: var(--shadow);
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    // Nubecitas suaves en la tarjeta
-    content: "";
+  &__wave {
     position: absolute;
-    inset: -50% -30% auto auto;
-    width: 120%;
-    height: 120%;
-    background:
-      radial-gradient(35px 20px at 10% 18%, rgba(255,255,255,.9) 50%, rgba(255,255,255,0) 55%),
-      radial-gradient(25px 15px at 18% 22%, rgba(255,255,255,.9) 50%, rgba(255,255,255,0) 55%),
-      radial-gradient(40px 22px at 25% 18%, rgba(255,255,255,.9) 50%, rgba(255,255,255,0) 55%),
-      radial-gradient(30px 18px at 32% 20%, rgba(255,255,255,.9) 50%, rgba(255,255,255,0) 55%),
-      radial-gradient(35px 20px at 70% 18%, rgba(255,255,255,.9) 50%, rgba(255,255,255,0) 55%);
-    opacity: .4;
+    inset-inline: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 120px;
+    color: $bg-page;
   }
 }
 
-.avatar {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-family: 'Baloo 2', cursive;
-  font-size: 48px;
-  font-weight: 800;
-  color: #174A75;
-  background: conic-gradient(from 200deg at 50% 40%, var(--bluey-500), var(--bluey-300));
-  border: 5px solid #fff;
-  box-shadow: var(--shadow);
+// NUBES
+
+.cloud {
+  position: absolute;
+  opacity: 0.8;
+  animation: float 18s ease-in-out infinite alternate;
+
+  svg {
+    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.08));
+  }
+
+  &--1 {
+    top: 10%;
+    left: 5%;
+    animation-delay: -4s;
+  }
+
+  &--2 {
+    top: 5%;
+    right: 10%;
+    animation-duration: 22s;
+  }
+
+  &--3 {
+    bottom: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation-duration: 20s;
+    animation-delay: -8s;
+  }
 }
 
-.cta-btn {
-  background: linear-gradient(180deg, var(--sun-400), #F4B431);
-  border: none;
-  color: #5A3C00;
-  font-weight: 800;
-  letter-spacing: .4px;
+@keyframes float {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(15px, -10px, 0);
+  }
+}
+
+/* CHIPS Y BOTÓN */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.9rem;
   border-radius: 999px;
-  padding: .85rem 1.25rem;
-  box-shadow: 0 8px 0 #D79C22, 0 14px 30px rgba(0,0,0,.12);
-  transform: translateY(0);
-  transition: transform .15s ease, box-shadow .15s ease;
+  background: rgba(255, 255, 255, 0.9);
+  color: $bluey-900;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.5rem;
+  border-radius: 999px;
+  background: #ffb347;
+  background-image: linear-gradient(135deg, #ffb347, #ffcc33);
+  color: #4b2d00;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.16);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 0 #D79C22, 0 18px 34px rgba(0,0,0,.16);
+    transform: translateY(-1px);
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.03);
   }
 
   &:active {
-    transform: translateY(1px);
-    box-shadow: 0 6px 0 #D79C22, 0 10px 24px rgba(0,0,0,.12);
+    transform: translateY(0);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.18);
+  }
+
+  &--small {
+    padding: 0.55rem 1.2rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* AVATAR */
+
+.avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 20%, #fff 0, #ffe9c7 30%, #ffb347 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  font-weight: 800;
+  color: #8b4a00;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.22);
+}
+
+/* LAYOUT GENERAL */
+
+.layout {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3.5rem;
+}
+
+/* CARDS */
+
+.card {
+  background: #fff;
+  border-radius: 1.5rem;
+  padding: 1.8rem;
+  box-shadow: 0 16px 30px rgba(12, 39, 76, 0.08);
+  position: relative;
+
+  &--primary {
+    margin-top: -3.5rem; // se sube para “encimar” con el wave
+    padding: 2rem 1.5rem;
+  }
+
+  &--light {
+    background: #ffffff;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  &--gradient-blue {
+    background: linear-gradient(180deg, $bluey-300, #ffffff);
+  }
+
+  &--gradient-cream {
+    background: linear-gradient(180deg, $cream, #ffffff);
+  }
+
+  &__title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: $bluey-700;
+    margin-bottom: 0.75rem;
+  }
+
+  &__subtitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $bluey-700;
+    margin-bottom: 0.75rem;
+  }
+
+  &__text {
+    font-size: 0.97rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+
+  &__grid {
+    display: grid;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+}
+
+/* LISTA */
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+  }
+}
+
+/* GRID DE TARJETAS INFERIORES */
+
+.cards-grid {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+/* HILLS */
+
+.hills {
+  margin-top: 2.5rem;
+
+  svg {
+    width: 100%;
+    height: 140px;
+    display: block;
+  }
+}
+
+/* FOOTER */
+
+.footer {
+  text-align: center;
+  padding: 1.5rem 1rem 2rem;
+  font-size: 0.8rem;
+  color: rgba($text-main, 0.7);
+}
+
+/* RESPONSIVE */
+
+@media (min-width: 768px) {
+  .hero {
+    padding: 4rem 2rem 7rem;
+
+    &__inner {
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    }
+
+    &__text {
+      text-align: left;
+    }
+  }
+
+  .card {
+    &--primary {
+      padding: 2.5rem 2rem;
+    }
+
+    &__grid {
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+      align-items: stretch;
+    }
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .avatar {
+    width: 170px;
+    height: 170px;
+    font-size: 4.3rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hero__text {
+    text-align: center;
+  }
+
+  .chips {
+    justify-content: center;
+  }
+
+  .btn-cta {
+    justify-content: center;
+    width: auto;
+  }
+
+  .card--primary {
+    margin-top: -2.5rem;
   }
 }
